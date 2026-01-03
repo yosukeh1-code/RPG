@@ -1,0 +1,199 @@
+.battle-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0f172a;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    animation: flash 0.5s ease-out;
+}
+
+@keyframes flash {
+    0% {
+        background-color: white;
+    }
+
+    100% {
+        background-color: #0f172a;
+    }
+}
+
+.battle-area {
+    flex: 2;
+    background: radial-gradient(circle at center, #334155 0%, #0f172a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.enemy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.enemy-sprite {
+    width: 160px;
+    height: 160px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: pixelated;
+    animation: float 2s ease-in-out infinite;
+}
+
+.enemy-sprite.defeated {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.hp-bar-container {
+    width: 120px;
+    height: 10px;
+    background-color: #475569;
+    border-radius: 4px;
+    margin-top: 1rem;
+    overflow: hidden;
+    border: 1px solid white;
+}
+
+.hp-bar {
+    height: 100%;
+    background-color: #ef4444;
+    transition: width 0.3s ease;
+}
+
+.enemy-name {
+    color: white;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.battle-ui {
+    flex: 1;
+    background-color: #1e293b;
+    border-top: 2px solid white;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.battle-log {
+    flex: 2;
+    background-color: #0f172a;
+    border: 2px solid #475569;
+    border-radius: 8px;
+    padding: 0.8rem;
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    overflow-y: auto;
+}
+
+.battle-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.player-status {
+    background-color: #334155;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hp-value {
+    color: #4ade80;
+}
+
+.hp-value.low-hp {
+    color: #ef4444;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.attack-btn,
+.run-btn {
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.1s;
+    text-transform: uppercase;
+    font-family: inherit;
+}
+
+.attack-btn:active,
+.run-btn:active {
+    transform: translateY(2px);
+}
+
+.attack-btn {
+    background-color: #ef4444;
+    color: white;
+    border-bottom: 4px solid #b91c1c;
+}
+
+.run-btn {
+    background-color: #fbbf24;
+    color: #78350f;
+    border-bottom: 4px solid #d97706;
+}
+
+.attack-btn:disabled,
+.run-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    border-bottom-width: 0;
+    margin-top: 4px;
+}

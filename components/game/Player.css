@@ -1,0 +1,40 @@
+.player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.2s linear;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Add pixelated rendering for crisp sprite scaling */
+    image-rendering: pixelated;
+}
+
+.player-sprite {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/sprites/hero.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.1s;
+}
+
+/* Direction handling */
+.player-left .player-sprite {
+    transform: scaleX(-1);
+}
+
+.player-right .player-sprite {
+    transform: scaleX(1);
+}
+
+/* For up/down we keep the front view for now as we have a single sprite */
+.player-up .player-sprite {
+    /* Optional: Could add a slight bobbing animation here */
+}
+
+.player-down .player-sprite {
+    transform: scaleX(1);
+}
